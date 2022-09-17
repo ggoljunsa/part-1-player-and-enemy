@@ -2,7 +2,8 @@ extends Actor
 
 
 export var stomp_impulse: = 600.0
-
+onready var bullet = preload("res://src/Actors/Bullet.tscn")
+var temp
 
 func _on_StompDetector_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
@@ -13,8 +14,12 @@ func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	shoot()
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var direction: = get_direction()
+	
+	
+	
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 	var snap: Vector2 = Vector2.DOWN * 60.0 if direction.y == 0.0 else Vector2.ZERO
 	_velocity = move_and_slide_with_snap(
@@ -23,11 +28,16 @@ func _physics_process(delta: float) -> void:
 
 
 func get_direction() -> Vector2:
+	if Input.get_action_strength("move_right"):
+		$AnimatedSprite.flip_h = false
+		Global.direction = Vector2.RIGHT
+		
+	if Input.get_action_strength("move_left"):
+		$AnimatedSprite.flip_h = true
+		Global.direction = Vector2.LEFT
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-Input.get_action_strength("jump") if is_on_floor() and Input.is_action_just_pressed("jump") else 0.0
-	)
-
+		-Input.get_action_strength("jump") if is_on_floor() and Input.is_action_just_pressed("jump") else 0.0)
 
 func calculate_move_velocity(
 		linear_velocity: Vector2,
@@ -50,4 +60,13 @@ func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) ->
 
 
 func die() -> void:
+	Playerdata.deaths += 1
 	queue_free()
+	
+func shoot():
+	if Input.is_action_just_pressed('shoot_X') and Global.combo > 1:
+		#print_debug(Global.combo)
+		temp = bullet.instance()
+		#$Position2D.set_position($Position2D.get_position * Global.direction) 
+		get_parent().add_child(temp)
+		temp.global_position = $Position2D.global_position
