@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/player_shoot.png-d4623c959096005d9dc9eba440b4327f.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/Player/Shoot/player_shoot.png"
+dest_files=[ "res://.import/player_shoot.png-d4623c959096005d9dc9eba440b4327f.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

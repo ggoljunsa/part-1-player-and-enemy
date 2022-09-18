@@ -1,14 +1,52 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/UserInterface/Changescenebutton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UserInterface/Quitbutton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Screens/UserInterface.gd" type="Script" id=4]
+[ext_resource path="res://src/Screens/TakinaDefault.png" type="Texture" id=5]
+[ext_resource path="res://src/Screens/Dialogoverlay.gd" type="Script" id=6]
+[ext_resource path="res://Fonts/ManaFont.tres" type="DynamicFont" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Indicator"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 98, 35 ), Vector2( 98, 60 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 98, 35 ) ]
+}
 
 [node name="UserInterface" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 3.0
+margin_bottom = 4.0
 script = ExtResource( 4 )
 
 [node name="Pauseoverlay" type="ColorRect" parent="."]
@@ -29,18 +67,63 @@ margin_right = 1161.0
 margin_bottom = 637.0
 
 [node name="Retrybutton" parent="Pauseoverlay/VBoxContainer" instance=ExtResource( 1 )]
-margin_right = 417.0
+margin_right = 452.0
 margin_bottom = 85.0
 text = "Retry"
 
 [node name="Titlebutton" parent="Pauseoverlay/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 89.0
-margin_right = 417.0
+margin_right = 452.0
 margin_bottom = 175.0
 text = "Go to title"
 next_scene_path = "res://src/Screens/MainScreen.tscn"
 
 [node name="Quitbutton" parent="Pauseoverlay/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 179.0
-margin_right = 417.0
+margin_right = 452.0
 margin_bottom = 265.0
+
+[node name="Dialogoverlay" type="ColorRect" parent="."]
+visible = false
+margin_left = 15.0
+margin_top = 31.0
+margin_right = 1893.0
+margin_bottom = 408.0
+color = Color( 1, 1, 1, 0.321569 )
+script = ExtResource( 6 )
+
+[node name="Portrait" type="Sprite" parent="Dialogoverlay"]
+position = Vector2( 194, 185.25 )
+scale = Vector2( 3.46, 3.635 )
+texture = ExtResource( 5 )
+
+[node name="Name" type="RichTextLabel" parent="Dialogoverlay"]
+margin_left = 400.0
+margin_top = 38.0
+margin_right = 978.0
+margin_bottom = 113.0
+custom_colors/default_color = Color( 0.137255, 0.843137, 0.294118, 1 )
+custom_fonts/normal_font = ExtResource( 7 )
+text = "Name Goes Here"
+
+[node name="Text" type="RichTextLabel" parent="Dialogoverlay"]
+margin_left = 393.0
+margin_top = 110.0
+margin_right = 1843.0
+margin_bottom = 386.0
+custom_fonts/normal_font = ExtResource( 7 )
+text = "Text goes Here"
+
+[node name="Indicator" type="Polygon2D" parent="Dialogoverlay"]
+visible = false
+position = Vector2( 98, 45 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 1550, 220, 1661, 220, 1610, 318 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogoverlay/Indicator"]
+reset_on_save = false
+anims/Indicator = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="Dialogoverlay"]
+wait_time = 0.05

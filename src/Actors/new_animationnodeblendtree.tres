@@ -1,0 +1,137 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=20 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "run_upshoot"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "jumpshoot"
+
+[sub_resource type="AnimationNodeTransition" id=30]
+input_count = 2
+input_0/name = "normal"
+input_0/auto_advance = false
+input_1/name = "up"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=31]
+input_count = 2
+input_0/name = "ground"
+input_0/auto_advance = false
+input_1/name = "jump"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=25]
+input_count = 2
+input_0/name = "shoot"
+input_0/auto_advance = false
+input_1/name = "notshoot"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=32]
+input_count = 2
+input_0/name = "shoot"
+input_0/auto_advance = false
+input_1/name = "notshoot"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "aim_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "idle_upshoot"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "jumpdown"
+
+[sub_resource type="AnimationNodeTransition" id=26]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "run"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=33]
+input_count = 2
+input_0/name = "up"
+input_0/auto_advance = false
+input_1/name = "down"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=27]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "run"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "run_aimed"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "run_normal"
+
+[sub_resource type="AnimationNodeTransition" id=37]
+input_count = 2
+input_0/name = "normal"
+input_0/auto_advance = false
+input_1/name = "up"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "jumpshoot_up"
+
+[sub_resource type="AnimationNodeTransition" id=36]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "run"
+input_1/auto_advance = false
+
+[resource]
+graph_offset = Vector2( -121.027, -178.81 )
+nodes/Animation/node = SubResource( 39 )
+nodes/Animation/position = Vector2( 960, 660 )
+"nodes/Animation 2/node" = SubResource( 28 )
+"nodes/Animation 2/position" = Vector2( 380, 380 )
+nodes/Direction/node = SubResource( 30 )
+nodes/Direction/position = Vector2( 840, 80 )
+nodes/Jump/node = SubResource( 31 )
+nodes/Jump/position = Vector2( 1320, 180 )
+nodes/Shooting_ground/node = SubResource( 25 )
+nodes/Shooting_ground/position = Vector2( 1060, 120 )
+nodes/Shooting_ground_2/node = SubResource( 32 )
+nodes/Shooting_ground_2/position = Vector2( 1360, 480 )
+nodes/aim_idle/node = SubResource( 23 )
+nodes/aim_idle/position = Vector2( 400, -40 )
+nodes/idle/node = SubResource( 21 )
+nodes/idle/position = Vector2( 640, 480 )
+nodes/idle_upshoot/node = SubResource( 34 )
+nodes/idle_upshoot/position = Vector2( 360, 240 )
+nodes/jump/node = SubResource( 35 )
+nodes/jump/position = Vector2( 800, 740 )
+nodes/jumpdown/node = SubResource( 29 )
+nodes/jumpdown/position = Vector2( 780, 940 )
+nodes/norm_moving/node = SubResource( 26 )
+nodes/norm_moving/position = Vector2( 640, 20 )
+nodes/ns_direction/node = SubResource( 33 )
+nodes/ns_direction/position = Vector2( 1160, 840 )
+nodes/ns_moving/node = SubResource( 27 )
+nodes/ns_moving/position = Vector2( 860, 340 )
+nodes/output/position = Vector2( 1540, 180 )
+nodes/run_aimed/node = SubResource( 24 )
+nodes/run_aimed/position = Vector2( 300, 100 )
+nodes/run_normal/node = SubResource( 22 )
+nodes/run_normal/position = Vector2( 700, 600 )
+nodes/s_direction/node = SubResource( 37 )
+nodes/s_direction/position = Vector2( 1160, 540 )
+nodes/up/node = SubResource( 38 )
+nodes/up/position = Vector2( 900, 540 )
+nodes/up_moving/node = SubResource( 36 )
+nodes/up_moving/position = Vector2( 641, 234 )
+node_connections = [ "output", 0, "Jump", "Jump", 0, "Shooting_ground", "Jump", 1, "Shooting_ground_2", "Direction", 0, "norm_moving", "Direction", 1, "up_moving", "Shooting_ground_2", 0, "s_direction", "Shooting_ground_2", 1, "ns_direction", "Shooting_ground", 0, "Direction", "Shooting_ground", 1, "ns_moving", "ns_direction", 0, "jump", "ns_direction", 1, "jumpdown", "ns_moving", 0, "idle", "ns_moving", 1, "run_normal", "up_moving", 0, "idle_upshoot", "up_moving", 1, "Animation 2", "norm_moving", 0, "aim_idle", "norm_moving", 1, "run_aimed", "s_direction", 0, "Animation", "s_direction", 1, "up" ]

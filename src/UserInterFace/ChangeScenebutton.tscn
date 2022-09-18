@@ -1,15 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/UserInterface/Playbutton.gd" type="Script" id=1]
+[ext_resource path="res://src/UserInterface/ChangeScenebutton.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/ManaFont.tres" type="DynamicFont" id=2]
 
-[node name="PlayButton" type="Button"]
+[node name="Changescenebutton" type="Button"]
 margin_right = 375.0
 margin_bottom = 100.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Play"
 script = ExtResource( 1 )
-next_scene_path = "res://src/Levels/LevelTemplate.tscn"
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

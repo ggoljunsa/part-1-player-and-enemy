@@ -1,0 +1,308 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/Player/Player3.0.png" type="Texture" id=2]
+[ext_resource path="res://src/Actors/new_animationnodeblendtree.tres" type="AnimationNodeBlendTree" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 41 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 48, 44.8857 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Laer",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "aim_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 1 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "fallt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 3 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+
+[sub_resource type="Animation" id=56]
+resource_name = "idle_upshoot"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 20, 20 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 2 ]
+}
+
+[sub_resource type="Animation" id=60]
+resource_name = "jumpdown"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 3 ]
+}
+
+[sub_resource type="Animation" id=57]
+resource_name = "jumpshoot"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 22, 22 ]
+}
+
+[sub_resource type="Animation" id=58]
+resource_name = "jumpshoot_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 21, 21 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "run_aimed"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "run_normal"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=59]
+resource_name = "run_upshoot"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 23, 24, 25, 26, 27, 28, 29, 30 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 40, 0 )
+collision_mask = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -192.0 ]
+}
+speed = Vector2( 400, 1350 )
+gravity = 1600.0
+stomp_impulse = 1600.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+process_mode = 0
+limit_left = 0
+limit_bottom = 1080
+limit_smoothed = true
+smoothing_enabled = true
+drag_margin_left = 0.0
+drag_margin_right = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -40 )
+shape = SubResource( 2 )
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+modulate = Color( 0.337255, 0.223529, 1, 1 )
+position = Vector2( 0, -51.1143 )
+shape = SubResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 56, -120 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 56, -304 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+animation = "Laer"
+speed_scale = 2.0
+playing = true
+centered = false
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -8, -88 )
+texture = ExtResource( 2 )
+hframes = 31
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+method_call_mode = 1
+anims/RESET = SubResource( 14 )
+anims/aim_idle = SubResource( 18 )
+anims/fallt = SubResource( 19 )
+anims/idle = SubResource( 15 )
+anims/idle_upshoot = SubResource( 56 )
+anims/jump = SubResource( 20 )
+anims/jumpdown = SubResource( 60 )
+anims/jumpshoot = SubResource( 57 )
+anims/jumpshoot_up = SubResource( 58 )
+anims/run_aimed = SubResource( 16 )
+anims/run_normal = SubResource( 17 )
+anims/run_upshoot = SubResource( 59 )
+
+[node name="ATree" type="AnimationTree" parent="."]
+tree_root = ExtResource( 4 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("Sprite:frame")
+parameters/Direction/current = 0
+parameters/Jump/current = 1
+parameters/Shooting_ground/current = 1
+parameters/Shooting_ground_2/current = 1
+parameters/norm_moving/current = 1
+parameters/ns_direction/current = 0
+parameters/ns_moving/current = 1
+parameters/s_direction/current = 0
+parameters/up_moving/current = 0
+
+[node name="InvulnerablilityTimer" type="Timer" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
+[connection signal="timeout" from="InvulnerablilityTimer" to="." method="_on_InvulnerablilityTimer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

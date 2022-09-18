@@ -32,7 +32,7 @@ initial_velocity = 100.0
 linear_accel = -100.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]

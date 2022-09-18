@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://rsc/skellllll.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asset/rock 복사본.png" type="Texture" id=3]
+[ext_resource path="res://rsc/mushroom.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "icon.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 32.0156
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource( 2 )
+format = 1
+tile_data = PoolIntArray( -131076, 0, 0, -131073, 0, 0, -196599, 0, 0, -65537, 0, 0, -131063, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0 )
+
+[node name="skell" parent="." instance=ExtResource( 2 )]
+position = Vector2( 375, -138 )
+
+[node name="temp" type="KinematicBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="temp"]
+position = Vector2( 137, -100 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="temp/Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="temp/Sprite/Area2D"]
+position = Vector2( -2, 0 )
+shape = SubResource( 3 )
+
+[node name="mushroom" parent="temp" instance=ExtResource( 4 )]
+position = Vector2( 610, -237 )

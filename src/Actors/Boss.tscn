@@ -1,0 +1,174 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://src/Actors/boss.png" type="Texture" id=1]
+[ext_resource path="res://src/Actors/Boss.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 900, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 1000, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 1100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 1200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 1300, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 1400, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 1500, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 1600, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 400, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 500, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 600, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 700, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 800, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "one_distance",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "melee",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=19]
+radius = 13.0
+height = 30.0
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 58.6048, 114.225 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 68.105, 150.45 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 46.1641, 43.2461 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 10.5, 27.625 )
+
+[node name="Boss" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 3, 5 )
+frames = SubResource( 18 )
+animation = "idle"
+frame = 1
+playing = true
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
+collision_layer = 2
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
+position = Vector2( 2, 7 )
+shape = SubResource( 19 )
+
+[node name="PlayerDetector" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( 49.4163, -28.2353 )
+scale = Vector2( 0.389105, 0.392157 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/PlayerDetector"]
+modulate = Color( 0.117647, 0.145098, 0.796078, 1 )
+position = Vector2( -196.39, 84.75 )
+shape = SubResource( 20 )
+
+[node name="AttackDetector" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( 50, -27 )
+scale = Vector2( 0.389105, 0.392157 )
+collision_layer = 2
+collision_mask = 9
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/AttackDetector"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -194.035, 76.5 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 24 )
+
+[node name="playerdetectorone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerdetectorone"]
+position = Vector2( -94.1641, 4.24609 )
+shape = SubResource( 22 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -70, -6 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 10.625 )
+shape = SubResource( 23 )
+
+[connection signal="area_entered" from="AnimatedSprite/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="AnimatedSprite/PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite/AttackDetector" to="." method="_on_AttackDetector_body_entered"]
+[connection signal="area_entered" from="playerdetectorone" to="." method="_on_playerdetectorone_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

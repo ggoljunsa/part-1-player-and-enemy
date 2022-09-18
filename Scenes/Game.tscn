@@ -20,7 +20,6 @@ texture = ExtResource( 4 )
 position = Vector2( 9.31323e-10, 0 )
 rotation = -1.5708
 frames = ExtResource( 2 )
-input = "shoot_X"
 
 [node name="Conductor" parent="." instance=ExtResource( 8 )]
 stream = ExtResource( 5 )
